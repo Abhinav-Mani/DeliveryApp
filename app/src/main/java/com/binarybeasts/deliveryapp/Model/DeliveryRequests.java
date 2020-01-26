@@ -3,7 +3,7 @@ package com.binarybeasts.deliveryapp.Model;
 import com.google.firebase.database.annotations.NotNull;
 
 public class DeliveryRequests {
-    String FarmersNumber,FarmersAddress,CustomerPhoneNo, CustomerAddress,Amount;
+    String FarmersNumber,FarmersAddress,CustomerPhoneNo, CustomerAddress,Amount,UID;
 
     public DeliveryRequests(){}
 
@@ -17,6 +17,14 @@ public class DeliveryRequests {
 
     public String getFarmersNumber() {
         return FarmersNumber;
+    }
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 
     public void setFarmersNumber(String farmersNumber) {
