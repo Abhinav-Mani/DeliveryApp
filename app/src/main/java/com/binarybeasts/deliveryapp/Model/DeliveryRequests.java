@@ -2,8 +2,10 @@ package com.binarybeasts.deliveryapp.Model;
 
 import com.google.firebase.database.annotations.NotNull;
 
-public class DeliveryRequests {
-    String FarmersNumber,FarmersAddress,CustomerPhoneNo, CustomerAddress,Amount,UID;
+import java.io.Serializable;
+
+public class DeliveryRequests implements Serializable {
+    String FarmersNumber,FarmersAddress,CustomerPhoneNo, CustomerAddress,Amount,UID,Driver;
 
     public DeliveryRequests(){}
 
@@ -13,6 +15,14 @@ public class DeliveryRequests {
         CustomerPhoneNo = customerPhoneNo;
         CustomerAddress = customerAddress;
         Amount = amount;
+    }
+
+    public String getDriver() {
+        return Driver;
+    }
+
+    public void setDriver(String driver) {
+        Driver = driver;
     }
 
     public String getFarmersNumber() {

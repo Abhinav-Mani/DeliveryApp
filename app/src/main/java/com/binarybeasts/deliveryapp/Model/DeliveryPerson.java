@@ -6,6 +6,10 @@ public class DeliveryPerson implements Serializable {
     String PhoneNumber;
     String Name;
     String Address;
+
+    public DeliveryPerson() {
+    }
+
     public DeliveryPerson(String phoneNumber, String name, String address) {
         PhoneNumber = phoneNumber;
         Name = name;

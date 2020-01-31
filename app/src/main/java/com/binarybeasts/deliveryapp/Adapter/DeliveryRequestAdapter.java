@@ -11,23 +11,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.binarybeasts.deliveryapp.MainActivity;
+import com.binarybeasts.deliveryapp.Model.DeliveryPerson;
 import com.binarybeasts.deliveryapp.Model.DeliveryRequests;
 import com.binarybeasts.deliveryapp.R;
-import com.google.firebase.database.DataSnapshot;
+import com.binarybeasts.deliveryapp.Utility.DistanceCalculator;
 
 import java.util.ArrayList;
 
 public class DeliveryRequestAdapter extends RecyclerView.Adapter<DeliveryRequestAdapter.MyViewHolder>{
     ArrayList<DeliveryRequests> list;
+    DeliveryPerson deliveryPerson;
     ClickHandler clickHandler;
     public static interface ClickHandler{
         public void accept(int position);
         public void decline(int position);
+        public void details(int position);
     }
 
-    public DeliveryRequestAdapter(ArrayList<DeliveryRequests> list, MainActivity mainActivity) {
+    public DeliveryRequestAdapter(ArrayList<DeliveryRequests> list, MainActivity mainActivity, DeliveryPerson deliveryPerson) {
         clickHandler=mainActivity;
         this.list = list;
+        this.deliveryPerson=deliveryPerson;
     }
 
     @NonNull
@@ -40,14 +44,31 @@ public class DeliveryRequestAdapter extends RecyclerView.Adapter<DeliveryRequest
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.to.setText(list.get(position).getCustomerAddress());
-        holder.from.setText(list.get(position).getFarmersAddress());
-        holder.amount.setText(list.get(position).getAmount());
-
+        String costumerAddress=list.get(position).getCustomerAddress(),farmerAddress=list.get(position).getFarmersAddress();
+        Log.d("ak47",deliveryPerson+"");
+        if(deliveryPerson==null) {
+            holder.to.setText("Calculating...");
+            holder.from.setText("Calculating...");
+        }
+        else {
+            DistanceCalculator distanceCalculator1=new DistanceCalculator(farmerAddress,deliveryPerson.getAddress());
+            DistanceCalculator distanceCalculator2=new DistanceCalculator(costumerAddress,farmerAddress);
+            holder.to.setText(distanceCalculator2.getDistance());
+            holder.from.setText(distanceCalculator1.getDistance());
+        }
+        final DeliveryRequests deliveryRequests=list.get(position);
+        holder.amount.setText(deliveryRequests.getAmount());
+        if(deliveryRequests.getDriver()!=null) {
+            holder.accept.setText("Details >>");
+        }
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickHandler.accept(position);
+                if(deliveryRequests.getDriver()==null) {
+                    clickHandler.accept(position);
+                }else {
+                    clickHandler.details(position);
+                }
             }
         });
         holder.decline.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +77,6 @@ public class DeliveryRequestAdapter extends RecyclerView.Adapter<DeliveryRequest
                 clickHandler.decline(position);
             }
         });
-
     }
 
     @Override

@@ -21,16 +21,16 @@
         android:layout_height="wrap_content">
         <Button
             android:layout_width="0dp"
-            android:text="Accept"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/accept"/>
-        <Button
-            android:layout_width="0dp"
             android:layout_weight="1"
             android:text="Decline"
             android:layout_height="wrap_content"
             android:id="@+id/decline"/>
+        <Button
+            android:layout_width="0dp"
+            android:text="Accept"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/accept"/>
 
     </LinearLayout>
 
