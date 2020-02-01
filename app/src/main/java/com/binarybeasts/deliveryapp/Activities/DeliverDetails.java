@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.binarybeasts.deliveryapp.Model.DeliveryRequests;
 import com.binarybeasts.deliveryapp.R;
 import com.binarybeasts.deliveryapp.Utility.Checker;
 import com.binarybeasts.deliveryapp.Utility.OPTGenerator;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -88,6 +90,7 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
             customerSection.setVisibility(View.VISIBLE);
             String[] s = deliveryRequests.getUID().split("-");
             s[1]="-"+s[1];
+            reference.child("Requests").child(s[1]).child(s[0]).child("status").setValue("Received Product From Farmer");
             //Toast.makeText(this,s[0]+"   "+s[1],Toast.LENGTH_LONG).show();
         }
     }
@@ -122,20 +125,22 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
        } else if(view==callFarmer){
            call(deliveryRequests.getFarmersNumber());
        } else if(view==verifyCustomerOTP){
-           verifyFarmerOTP();
+           verifyCustomerOTP();
        } else if(view==verifyFarmerOTP){
             verifyFarmerOtp();
        }
     }
 
-    private void verifyFarmerOTP() {
+    private void verifyCustomerOTP() {
         String text=customerEnteredOtp.getText().toString().trim();
         if(text.equals(customerOtp)){
             String[] s = deliveryRequests.getUID().split("-");
             s[1]="-"+s[1];
+            reference.child("Requests").child(s[1]).child(s[0]).child("status").setValue("Delivered");
             //Toast.makeText(this,s[0]+"   "+s[1],Toast.LENGTH_LONG).show();
         }
     }
+
 
     private void call(String phone) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
