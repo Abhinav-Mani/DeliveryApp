@@ -3,12 +3,11 @@ package com.binarybeasts.deliveryapp.Utility;
 public class OPTGenerator {
     public String getOTP(int l)
     {
-        String OTP="";
-        for (int i=0;i<l;i++)
-        {
-            OTP+= getRandomCharacter();
+        StringBuilder OTP= new StringBuilder();
+        for (int i=0;i<l;i++) {
+            OTP.append(getRandomCharacter());
         }
-        return OTP;
+        return OTP.toString();
     }
 
     private char getRandomCharacter() {

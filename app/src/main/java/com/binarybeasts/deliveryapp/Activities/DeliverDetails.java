@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.binarybeasts.deliveryapp.Model.DeliveryRequests;
 import com.binarybeasts.deliveryapp.R;
@@ -56,11 +54,11 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
         requestCustomerOTP.setOnClickListener(this);
         requestFarmerOTP.setOnClickListener(this);
         verifyFarmerOTP.setOnClickListener(this);
-        verifyCustomerOTP.setOnClickListener(this);;
-        callFarmer.setOnClickListener(this);;
-        callCustomer.setOnClickListener(this);;
+        verifyCustomerOTP.setOnClickListener(this);
+        callFarmer.setOnClickListener(this);
+        callCustomer.setOnClickListener(this);
         directionCustomer.setOnClickListener(this);
-        directionFarmer.setOnClickListener(this);;
+        directionFarmer.setOnClickListener(this);
     }
 
 
@@ -88,7 +86,7 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
         if(text.equals(farmerOtp)){
             //farmerSection.setVisibility(View.GONE);
             customerSection.setVisibility(View.VISIBLE);
-            String s[]=deliveryRequests.getUID().split("-");
+            String[] s = deliveryRequests.getUID().split("-");
             s[1]="-"+s[1];
             //Toast.makeText(this,s[0]+"   "+s[1],Toast.LENGTH_LONG).show();
         }
@@ -97,7 +95,6 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
         Intent intent=getIntent();
         if(intent.hasExtra("data")){
             deliveryRequests=(DeliveryRequests) intent.getSerializableExtra("data");
-            Log.d("ak47", "check: "+deliveryRequests.getUID());
         }
         else {
             finish();
@@ -134,7 +131,7 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
     private void verifyFarmerOTP() {
         String text=customerEnteredOtp.getText().toString().trim();
         if(text.equals(customerOtp)){
-            String s[]=deliveryRequests.getUID().split("-");
+            String[] s = deliveryRequests.getUID().split("-");
             s[1]="-"+s[1];
             //Toast.makeText(this,s[0]+"   "+s[1],Toast.LENGTH_LONG).show();
         }
