@@ -88,8 +88,7 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
         if(text.equals(farmerOtp)){
             //farmerSection.setVisibility(View.GONE);
             customerSection.setVisibility(View.VISIBLE);
-            String[] s = deliveryRequests.getUID().split("-");
-            s[1]="-"+s[1];
+            String[] s = deliveryRequests.getUID().split("\\|-\\|-\\|");
             reference.child("Requests").child(s[1]).child(s[0]).child("status").setValue("Received Product From Farmer");
             //Toast.makeText(this,s[0]+"   "+s[1],Toast.LENGTH_LONG).show();
         }
@@ -134,8 +133,7 @@ public class DeliverDetails extends AppCompatActivity implements View.OnClickLis
     private void verifyCustomerOTP() {
         String text=customerEnteredOtp.getText().toString().trim();
         if(text.equals(customerOtp)){
-            String[] s = deliveryRequests.getUID().split("-");
-            s[1]="-"+s[1];
+            String[] s = deliveryRequests.getUID().split("\\|-\\|-\\|");
             reference.child("Requests").child(s[1]).child(s[0]).child("status").setValue("Delivered");
             //Toast.makeText(this,s[0]+"   "+s[1],Toast.LENGTH_LONG).show();
         }

@@ -1,6 +1,6 @@
 package com.binarybeasts.deliveryapp.Model;
 
-import com.google.firebase.database.annotations.NotNull;
+
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ public class DeliveryRequests implements Serializable {
 
     public DeliveryRequests(){}
 
-    public DeliveryRequests(@NotNull String farmersNumber, @NotNull String farmersAddress, @NotNull String customerPhoneNo, @NotNull String customerAddress, @NotNull String amount) {
+    public DeliveryRequests(String farmersNumber,String farmersAddress, String customerPhoneNo, String customerAddress, String amount) {
         FarmersNumber = farmersNumber;
         FarmersAddress = farmersAddress;
         CustomerPhoneNo = customerPhoneNo;

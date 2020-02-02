@@ -221,8 +221,7 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
         delivery.setDriver(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
         delivery.setUID(null);
         reference.child("Delivery").child(uid).setValue(delivery);
-        String[] s = uid.split("-");
-        s[1]="-"+s[1];
+        String[] s = uid.split("\\|-\\|-\\|");
         reference.child("Requests").child(s[1]).child(s[0]).child("status").setValue("Out For Delivery");
 
     }
