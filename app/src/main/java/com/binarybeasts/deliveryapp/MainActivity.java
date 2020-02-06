@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
+                else
+                {
+                    fetch();
+                }
             }
         });
     }
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
 
         checkNewUser();
 
-        fetch();
+        //fetch();
 
 
         getLocation();
