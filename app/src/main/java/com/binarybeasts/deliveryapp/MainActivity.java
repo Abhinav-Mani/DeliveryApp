@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
                 return;
             }
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-            //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         }
     }
 
@@ -152,13 +152,12 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
             return;
         }
         Location lastKnownLocation=locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
         try{
             String pos=lastKnownLocation.getLatitude()+" "+lastKnownLocation.getLongitude();
             reference.child("DeliveryBoy").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("address").setValue(pos);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -213,7 +212,8 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
     }
 
     private void init() {
-        SetPersistence persistence=new SetPersistence();
+
+        //SetPersistence persistence=new SetPersistence();
         mAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         reference=database.getReference();
