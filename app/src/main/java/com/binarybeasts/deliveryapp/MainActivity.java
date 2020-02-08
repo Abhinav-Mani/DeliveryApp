@@ -155,8 +155,15 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
         //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-        String pos=lastKnownLocation.getLatitude()+" "+lastKnownLocation.getLongitude();
-        reference.child("DeliveryBoy").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("address").setValue(pos);
+        try{
+            String pos=lastKnownLocation.getLatitude()+" "+lastKnownLocation.getLongitude();
+            reference.child("DeliveryBoy").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("address").setValue(pos);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       // String pos=lastKnownLocation.getLatitude()+" "+lastKnownLocation.getLongitude();
+        //reference.child("DeliveryBoy").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("address").setValue(pos);
     }
 
 
