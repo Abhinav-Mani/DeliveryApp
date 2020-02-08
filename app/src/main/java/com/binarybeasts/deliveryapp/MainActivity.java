@@ -25,6 +25,7 @@ import com.binarybeasts.deliveryapp.Activities.LoginActivity;
 import com.binarybeasts.deliveryapp.Adapter.DeliveryRequestAdapter;
 import com.binarybeasts.deliveryapp.Model.DeliveryPerson;
 import com.binarybeasts.deliveryapp.Model.DeliveryRequests;
+import com.binarybeasts.deliveryapp.Utility.SetPersistence;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -205,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements DeliveryRequestAd
     }
 
     private void init() {
+        SetPersistence persistence=new SetPersistence();
         mAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         reference=database.getReference();
