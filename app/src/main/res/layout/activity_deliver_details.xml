@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.DeliverDetails">
     <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:id="@+id/FarmerSection"
@@ -15,25 +16,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Farmer"
+            android:textStyle="bold"
+
             android:textAlignment="center"
-            android:textSize="20dp"/>
+            android:textSize="25sp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Distance:-"
+            android:textStyle="bold"
             android:id="@+id/distanceFarmerId"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:weightSum="2"
             android:layout_height="wrap_content">
             <Button
+                android:background="@drawable/round_bg_grey"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/callFarmer"
                 android:text="CALL"/>
             <Button
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/round_bg_grey"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -41,22 +50,28 @@
                 android:text="Direction >>"/>
         </LinearLayout>
         <EditText
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/farmerOTPEditText"
             android:hint="OTP"
             android:inputType="text"/>
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2">
             <Button
+                android:background="@drawable/round_bg_grey"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Request OTP"
                 android:id="@+id/requestFarmerOTP"/>
             <Button
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/round_bg_grey"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -65,25 +80,29 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginVertical="40dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/CustomerSection"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer"
+            android:textStyle="bold"
             android:textAlignment="center"
-            android:textSize="20dp"/>
+            android:textSize="25sp"/>
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Distance:-"
+            android:textStyle="bold"
             android:id="@+id/customerDistance"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:weightSum="2"
             android:layout_height="wrap_content">
@@ -92,8 +111,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="CALL"
+                android:background="@drawable/round_bg_grey"
                 android:id="@+id/callCustomer"/>
             <Button
+                android:background="@drawable/round_bg_grey"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -102,6 +125,7 @@
         </LinearLayout>
         <EditText
             android:layout_width="match_parent"
+            android:layout_margin="20dp"
             android:layout_height="wrap_content"
             android:id="@+id/customerOTPEditText"
             android:hint="OTP"
@@ -111,12 +135,16 @@
             android:layout_height="wrap_content"
             android:weightSum="2">
             <Button
+                android:background="@drawable/round_bg_grey"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Request OTP"
                 android:id="@+id/requestCustomerOTP"/>
             <Button
+                android:background="@drawable/round_bg_grey"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
