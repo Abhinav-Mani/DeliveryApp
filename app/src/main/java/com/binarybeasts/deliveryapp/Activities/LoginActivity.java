@@ -32,11 +32,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     String number,VerificationId,UID,DisplayName,Displayaddress;
     FirebaseAuth mAuth;
 
+    ProgressDialog mProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         intit();
+        mProgress = new ProgressDialog(this);
+        mProgress.setTitle("Logging In.....");
+        mProgress.setMessage("Please wait.");
+        mProgress.setIndeterminate(true);
 
 
     }
@@ -59,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if(view==submit) {
+            mProgress.show();
             if(TextUtils.isEmpty(name.getText().toString().trim())) {
                 Toast.makeText(LoginActivity.this,"Name cannot Be Empty",Toast.LENGTH_LONG).show();
             }else if(TextUtils.isEmpty(address.getText().toString().trim())){
@@ -94,6 +101,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    mProgress.dismiss();
                     Intent intent=new Intent(LoginActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                      DeliveryPerson deliveryPerson =new DeliveryPerson(mAuth.getCurrentUser().getPhoneNumber().toString(),DisplayName,Displayaddress);
